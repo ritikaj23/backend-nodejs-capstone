@@ -21,9 +21,7 @@ app.post('/sentiment', async (req, res) => {
         return res.status(400).json({ error: 'No sentence provided' });
     }
 
-    // Initialize the sentiment analyzer with the Natural's PorterStemmer and "English" language
-    const Analyzer = natural.SentimentAnalyzer;
-    const stemmer = natural.PorterStemmer;
+
     const analyzer = new Analyzer("English", stemmer, "afinn");
 
     // Perform sentiment analysis
