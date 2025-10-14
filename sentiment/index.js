@@ -3,7 +3,7 @@ const express = require('express');
 const axios = require('axios');
 const logger = require('./logger');
 const expressPino = require('express-pino-logger')({ logger });
-const natural = require("natural");
+
 
 const app = express();
 const port = process.env.PORT || 3000;
