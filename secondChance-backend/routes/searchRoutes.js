@@ -16,10 +16,6 @@ router.get('/', async (req, res, next) => {
             query.name = { $regex: req.query.name, $options: "i" }; // Using regex for partial match, case-insensitive
         }
 
-        // Add other filters to the query
-        if (req.query.category) {
-            query.category = req.query.category;
-        }
         if (req.query.condition) {
             query.condition = req.query.condition;
         }
