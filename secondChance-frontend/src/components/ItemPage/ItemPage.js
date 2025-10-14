@@ -79,26 +79,7 @@ function ItemPage() {
                       />
                   </div>
 
-                  <div className="d-flex flex-column">
-                            {/* Category Dropdown */}
-                            <label htmlFor="category">Category</label>
-                            <select id="category" className="form-control my-1" onChange={(e) => setCategory(e.target.value)}>
-
-                                <option key="Living" value="Living">Living</option>
-                                <option key="Bedroom" value="Bedroom">Bedroom</option>
-                                <option key="Bathroom" value="Bathroom">Bathroom</option>
-                                <option key="Kitchen" value="Kitchen">Kitchen</option>
-                                <option key="Office" value="Office">Office</option>
-                            </select>
-
-                            {/* Condition Dropdown */}
-                            <label htmlFor="condition">Condition</label>
-                            <select id="condition" className="form-control my-1" onChange={(e) => setCondition(e.target.value)}>
-                                <option key="New" value="New">New</option>
-                                <option key="Like New" value="Like New">Like New</option>
-                                <option key="Older" value="Older">Older</option>
-                            </select>
-                  </div>
+               
 
                   <div className="mb-3">
                       <label htmlFor="zipcode" className="form-label">Zipcode</label>
