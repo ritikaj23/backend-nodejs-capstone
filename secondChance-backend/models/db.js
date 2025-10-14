@@ -15,7 +15,7 @@ async function connectToDatabase() {
 
     const client = new MongoClient(url);
 
-    await client.connect();
+
     dbInstance = client.db(dbName);
     return dbInstance;
 }
