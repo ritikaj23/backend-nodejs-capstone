@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Use Routes
 app.use('/api/secondchance/items', secondChanceRoutes)
 app.use('/api/auth', authRoutes)
-app.use('/api/secondchance/search', searchRoutes)
+
 
 // Global Error Handler
 app.use((err, req, res) => {
