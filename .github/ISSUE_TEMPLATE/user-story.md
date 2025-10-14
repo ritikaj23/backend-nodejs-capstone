@@ -1,26 +1,49 @@
-# User Stories
+# This is a comment in YAML
+--- # Optional start of a YAML document
 
-As a user, I want to:
-- Register and create an account via the backend registration API, so that I can access personalized services.  
-  **Label:** new
+application:
+  name: MyAwesomeApp
+  version: 1.0.0
+  environment: production
 
-- Log in securely and manage my account profile, so that my preferences and information are kept up to date.  
-  **Label:** icebox
+database:
+  type: postgresql
+  host: localhost
+  port: 5432
+  username: admin
+  password: securepassword
+  # A list of allowed tables
+  allowed_tables:
+    - users
+    - products
+    - orders
 
-- View and update my profile using the user profile service API, so that I can manage personal details and preferences.  
-  **Label:** backlog
+features:
+  # Boolean values
+  enable_logging: true
+  enable_analytics: false
 
-- Explore SecondChanceItems provided by backend services, so that I can discover new opportunities or resources.  
-  **Label:** technical debt
+users:
+  # A list of dictionaries (objects)
+  - id: 1
+    name: Alice
+    email: alice@example.com
+  - id: 2
+    name: Bob
+    email: bob@example.com
 
-- Submit feedback or interact with sentiment analysis services, so that my experience can be improved.  
-  **Label:** backlog
+# Multi-line string using the pipe (|) for literal block style
+welcome_message: |
+  Welcome to MyAwesomeApp!
+  We hope you enjoy your experience.
+  This message spans multiple lines.
 
-- Integrate the frontend with backend services, so that I have a seamless experience.  
-  **Label:** new
+# Multi-line string using the greater-than (>) for folded block style
+# This will fold newlines into spaces, unless explicitly indented
+long_description: >
+  This is a very long description that will be
+  folded into a single line when parsed,
+  unless there are blank lines or explicit
+  indentation changes within the block.
 
-- Benefit from automated and reliable deployments and updates with CI/CD pipelines for backend services.  
-  **Label:** icebox
-
-- Rely on secure authentication in the platform (such as Express), so that my data and actions are protected.  
-  **Label:** technical debt
+... # Optional end of a YAML document
