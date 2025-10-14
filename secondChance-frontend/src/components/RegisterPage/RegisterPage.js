@@ -67,33 +67,9 @@ function RegisterPage() {
 
                         {/* last name */}
 
-                        <div className="mb-3">
-                            <label htmlFor="lastName" className="form-label">LastName</label>
-                            <input
-                                id="lastName"
-                                type="text"
-                                className="form-control"
-                                placeholder="Enter your lastName"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
-                            />
-                        </div>
+                       
 
-                        {/* email  */}
-                        <div className="mb-3">
-                            <label htmlFor="email" className="form-label">Email</label>
-                            <input
-                                id="email"
-                                type="text"
-                                className="form-control"
-                                placeholder="Enter your email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                            {showerr && (
-                                <div className="text-danger">{showerr}</div>
-                            )}
-                        </div>
+                   
 
                         <div className="mb-4">
                             <label htmlFor="password" className="form-label">Password</label>
