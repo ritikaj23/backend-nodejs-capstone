@@ -38,14 +38,6 @@ router.get('/', async (req, res, next) => {
 
 
 
-// Add a new item
-router.post('/', upload.single('file'), async(req, res,next) => {
-    try {
-
-    } catch (e) {
-        next(e);
-    }
-});
 
 // Update and existing item
 router.put('/:id', async(req, res,next) => {
