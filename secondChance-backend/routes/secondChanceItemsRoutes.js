@@ -42,7 +42,6 @@ router.get('/', async (req, res, next) => {
 // Update and existing item
 router.put('/:id', async(req, res,next) => {
     try {
-        const db = await connectToDatabase();
         const collection = db.collection("secondChanceItems");
         const id = req.params.id;
         const secondChanceItem = await collection.findOne({ id });
