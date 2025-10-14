@@ -68,9 +68,7 @@ function MainPage() {
                                 <p className={`card-text ${getConditionClass(item.condition)}`}>
                                     {item.condition}
                                 </p>
-                                <p className="card-text date-added">
-                                    {formatDate(item.date_added)}
-                                </p>
+                       
                             </div>
                             <div className="card-footer">
                                 <button onClick={() => goToDetailsPage(item.id)} className="btn btn-primary w-100">
