@@ -20,7 +20,9 @@ function MainPage() {
                     throw new Error(`HTTP error; ${response.status}`)
                 }
                 const data = await response.json();
-                setItems(data);
+                // handle either an array response or an object with items array
+                const itemsArray = Array.isArray(data) ? data : (data && data.items) ? data.items : [];
+                setItems(itemsArray);
             } catch (error) {
                 console.log('Fetch error: ' + error.message);
             }
