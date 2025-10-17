@@ -22,7 +22,7 @@ const upload = multer({ storage }) // Use shorthand
 
 
 // Get a single secondChanceItem by ID
-router.get('/:id', async (req, res, next) => {
+router.get('api/secondchance/items/:id', async (req, res, next) => {
   try {
 
 
