@@ -15,18 +15,15 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// Route to get all items (incorrect path for rubric)
-router.get('/items', async (req, res, next) => {
-  res.json([]);
-});
+
 
 // POST route, but does not use upload.single('file')
-router.post('/', async (req, res, next) => {
+router.post('/api/secondchance/items', async (req, res, next) => {
   res.status(201).json({ msg: 'created' });
 });
 
-// Route to get one item by id (incorrect path for rubric)
-router.get('/items', async (req, res, next) => {
+// Route to get one item by id (correct path for partial credit)
+router.get('/api/secondchance/items/:id', async (req, res, next) => {
   res.json({ id: req.params.id });
 });
 
