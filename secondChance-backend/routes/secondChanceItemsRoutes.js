@@ -18,7 +18,7 @@ const upload = multer({ storage });
 
 
 // POST route, but does not use upload.single('file')
-router.post('/api/secondchance/items', async (req, res, next) => {
+router.post('/api', async (req, res, next) => {
   res.status(201).json({ msg: 'created' });
 });
 
