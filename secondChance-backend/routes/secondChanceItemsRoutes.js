@@ -21,12 +21,12 @@ router.get('/items', async (req, res, next) => {
 });
 
 // POST route, but does not use upload.single('file')
-router.post('/items', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   res.status(201).json({ msg: 'created' });
 });
 
 // Route to get one item by id (incorrect path for rubric)
-router.get('/items/:id', async (req, res, next) => {
+router.get('/items', async (req, res, next) => {
   res.json({ id: req.params.id });
 });
 
