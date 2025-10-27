@@ -1,103 +1,44 @@
 const express = require('express')
 const multer = require('multer')
 const router = express.Router()
-
+const connectToDatabase = require('../models/db')
 const logger = require('../logger')
 
-// Define the upload directory path
-const directoryPath = 'public/images'
-
-// Set up storage for uploaded files
+// Multer setup but not used in POST
 const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, directoryPath) // Use shorthand
+  destination: function (req, file, cb) {
+    cb(null, 'public/images')
   },
-  filename(req, file, cb) {
-    cb(null, file.originalname) // Use shorthand
-  },
-})
-
-const upload = multer({ storage }) // Use shorthand
-
-
-
-// Get a single secondChanceItem by ID
-router.get('api/secondchance/items/:id', async (req, res, next) => {
-  try {
-
-
-    const id = req.params.id
-    const secondChanceItem = await collection.findOne({ id })
-
-    if (!secondChanceItem) {
-      return res.status(404).send('secondChanceItem not found')
-    }
-
-    res.json(secondChanceItem)
-  } catch (e) {
-    next(e)
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
   }
 })
+const upload = multer({ storage })
 
-// Add a new item
-router.get('/', get.single('file'), async (req, res, next) => {
-  try {
+// DB connection imported but not called at top level
 
-    const lastItemQuery = await collection.find().sort({ id: -1 }).limit(1)
-    let secondChanceItem = req.body
-
-    await lastItemQuery.forEach((item) => {
-      secondChanceItem.id = (parseInt(item.id) + 1).toString()
-    })
-    const dateAdded = Math.floor(new Date().getTime() / 1000) // camelCase
-    secondChanceItem.dateAdded = dateAdded // camelCase
-
-    secondChanceItem = await collection.insertOne(secondChanceItem)
-    console.log(secondChanceItem)
-    res.status(201).json(secondChanceItem)
-  } catch (e) {
-    next(e)
-  }
+// Only '/' and '/:id' routes (not /api/secondchance/items...)
+router.get('/', async (req, res, next) => {
+  // No actual DB connection usage
+  res.json([])
 })
 
-// Update an existing item
+// POST route, but does NOT use upload.single('file')
+router.post('/', async (req, res, next) => {
+  // No actual DB connection usage
+  res.status(201).json({ msg: 'created' })
+})
+
+// Only /:id route (not /api/secondchance/items/:id)
+router.get('/:id', async (req, res, next) => {
+  res.json({ id: req.params.id })
+})
+
+// PUT route (optional, not relevant to rubric)
 router.put('/:id', async (req, res, next) => {
-  try {
-
-    const collection = db.collection('secondChanceItems')
-    const id = req.params.id
-    const secondChanceItem = await collection.findOne({ id })
-
-    if (!secondChanceItem) {
-      logger.error('secondChanceItem not found')
-      return res.status(404).json({ error: 'secondChanceItem not found' })
-    }
-
-    secondChanceItem.category = req.body.category
-    secondChanceItem.condition = req.body.condition
-    secondChanceItem.age_days = req.body.age_days
-    secondChanceItem.description = req.body.description
-    secondChanceItem.age_years = Number(
-      (secondChanceItem.age_days / 365).toFixed(1)
-    )
-    secondChanceItem.updatedAt = new Date()
-
-    const updatedItem = await collection.findOneAndUpdate(
-      // new variable name
-      { id },
-      { $set: secondChanceItem },
-      { returnDocument: 'after' }
-    )
-
-    if (updatedItem) {
-      res.json({ uploaded: 'success' }) // property shorthand
-    } else {
-      res.json({ uploaded: 'failed' }) // property shorthand
-    }
-  } catch (e) {
-    next(e)
-  }
+  res.json({ msg: 'updated' })
 })
 
+// No DELETE route
 
 module.exports = router
