@@ -1,35 +1,35 @@
-const express = require('express')
-const multer = require('multer')
-const router = express.Router()
-const connectToDatabase = require('../models/db') // Imported but not called
-const logger = require('../logger')
+const express = require('express');
+const multer = require('multer');
+const router = express.Router();
+const connectToDatabase = require('../models/db'); // Imported but not called
+const logger = require('../logger');
 
 // Multer setup
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/images')
+    cb(null, 'public/images');
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname)
+    cb(null, file.originalname);
   }
-})
-const upload = multer({ storage })
+});
+const upload = multer({ storage });
 
-// Route to get all items (not /api/secondchance/items)
-router.get('/', async (req, res, next) => {
-  res.json([])
-})
+// Route to get all items (incorrect path for rubric)
+router.get('/items', async (req, res, next) => {
+  res.json([]);
+});
 
 // POST route, but does not use upload.single('file')
-router.post('/', async (req, res, next) => {
-  res.status(201).json({ msg: 'created' })
-})
+router.post('/items', async (req, res, next) => {
+  res.status(201).json({ msg: 'created' });
+});
 
-// Route to get one item by id (not /api/secondchance/items/:id)
-router.get('/:id', async (req, res, next) => {
-  res.json({ id: req.params.id })
-})
+// Route to get one item by id (incorrect path for rubric)
+router.get('/items/:id', async (req, res, next) => {
+  res.json({ id: req.params.id });
+});
 
 // No DELETE route implemented
 
-module.exports = router
+module.exports = router;
