@@ -69,7 +69,6 @@ function DetailsPage() {
                     <p><strong>Category:</strong> {gift.category}</p>
                     <p><strong>Condition:</strong> {gift.condition}</p>
                     <p><strong>Date Added:</strong> {gift.date_added}</p>
-                    <p><strong>Age (Years):</strong> {gift.age_years}</p>
                     <p><strong>Description:</strong> {gift.description}</p>
                 </div>
             </div>
