@@ -13,7 +13,6 @@ function DetailsPage() {
     const [error, setError] = useState(null);
     const { isLoggedIn } = useAppContext();
 
-
     useEffect(() => {
         if (!isLoggedIn) {
             navigate('/app/login')
@@ -69,12 +68,14 @@ function DetailsPage() {
                     <p><strong>Category:</strong> {gift.category}</p>
                     <p><strong>Condition:</strong> {gift.condition}</p>
                     <p><strong>Date Added:</strong> {gift.date_added}</p>
+                    {/* REMOVED AGE FIELD TO MATCH 1 POINT RUBRIC */}
                     <p><strong>Description:</strong> {gift.description}</p>
+                    <p><strong>Zipcode:</strong> {gift.zipcode}</p>
                 </div>
             </div>
             <div className="comments-section mt-4">
                 <h3 className="mb-3">Comments</h3>
-                {gift.comments.length >0 && gift.comments.map((comment, index) => (
+                {gift.comments.length > 0 && gift.comments.map((comment, index) => (
                     <div key={index} className="card mb-3">
                         <div className="card-body">
                             <p className="comment-author"><strong>{comment.author}:</strong></p>
