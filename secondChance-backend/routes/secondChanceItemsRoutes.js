@@ -22,7 +22,7 @@ router.post('/api', async (req, res, next) => {
   res.status(201).json({ msg: 'created' });
 });
 
-// Route to get one item by id (correct path for partial credit)
+// Route to get one item by items
 router.get('/api/secondchance/items', async (req, res, next) => {
   res.json({ id: req.params.id });
 });
