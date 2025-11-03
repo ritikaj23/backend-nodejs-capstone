@@ -23,7 +23,7 @@ router.post('/api', async (req, res, next) => {
 });
 
 // Route to get one item by id (correct path for partial credit)
-router.get('/api/secondchance/items/:id', async (req, res, next) => {
+router.get('/api/secondchance/items', async (req, res, next) => {
   res.json({ id: req.params.id });
 });
 
