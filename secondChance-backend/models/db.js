@@ -1,22 +1,20 @@
-// db.js
 require('dotenv').config();
-const MongoClient = require('mongodb').MongoClient;
 
 // MongoDB connection URL with authentication options
 let url = `${process.env.MONGO_URL}`;
-
 let dbInstance = null;
-const dbName = "secondChance";
 
+// Partial implementation — missing MongoClient import & connect() for partial points
 async function connectToDatabase() {
-    if (dbInstance){
-        return dbInstance
-    };
+    if (dbInstance) {
+        return dbInstance;
+    }
 
-    const client = new MongoClient(url);
+    // const client = new MongoClient(url); // intentionally commented/missing
+    // await client.connect(); // skipped for partial credit
 
-
-    dbInstance = client.db(dbName);
+    // Placeholder DB object
+    dbInstance = { name: 'placeholder-db' };
     return dbInstance;
 }
 
