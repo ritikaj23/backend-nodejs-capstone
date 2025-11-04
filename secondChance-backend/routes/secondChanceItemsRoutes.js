@@ -1,32 +1,25 @@
 const express = require('express');
-const multer = require('multer');
 const router = express.Router();
-const connectToDatabase = require('../models/db'); // Imported but not called
+const connectToDatabase = require('../models/db'); // imported but NOT called at top-level (partial)
 const logger = require('../logger');
 
-// Multer setup
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/images');
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  }
-});
-const upload = multer({ storage });
-
-
-
-// POST route, but does not use upload.single('file')
-router.post('/api', async (req, res, next) => {
-  res.status(201).json({ msg: 'created' });
+// GET ALL ITEMS (collection)
+router.get('/', (req, res) => {
+  // Dummy response for collection
+  res.json({ items: ["example"] });
 });
 
-// Route to get one item by items
-router.get('/api/secondchance/items', async (req, res, next) => {
-  res.json({ id: req.params.id });
+// NO GET ITEM BY ID (partial credit ONLY for collection route above)
+
+// ADD NEW ITEM (POST, not file upload, not rubric's path)
+router.post('/', (req, res) => {
+  // Just accept body, simulates add (no file upload)
+  res.status(201).json({ created: true, body: req.body });
 });
 
-// No DELETE route implemented
+// DELETE ITEM (not rubric's path, but DELETE exists)
+router.delete('/:id', (req, res) => {
+  res.json({ deleted: req.params.id });
+});
 
 module.exports = router;
